@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head> 
+		<title>Backbone App</title>
+	</head>
+	<body>
+	<div id = "user_container"></div>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+		
+		
+		<script>
+				User = Backbone.Model.extend({
+					initialize : function(){
+						console.log("User model has been initialized");
+						
+						this.on('change', function(){
+							alert('User info has been updated');
+						});
+					},
+					defaults: {
+						username: "TankToes",
+						email: "Tank@tank.com"
+					},
+					getUserEmail: function(){
+						console.log(this.get('email'));
+					},
+					changeUserEmail: function(newEmail){
+						this.set({email: newEmail});
+					},
+					getUsername: function(){
+						console.log(this.get('username'));
+					},
+					changeUsername: function(newUsername){
+						this.set({username: newUsername});
+					}
+				});			
+				
+				//var user = new User();
+				
+				tank = new User();
+				sadie = new User({username: "Sadie", email: "sadie@tank.com"});
+				sadie.changeUserEmail('sadie@saide.com');
+				sadie.getUserEmail();
+		</script>
+	
+	</body>
+</html>
+	
